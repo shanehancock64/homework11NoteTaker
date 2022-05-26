@@ -1,24 +1,31 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 
-// Init App & create port.
+// Init App & create port==========================================================================================
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Setup Parse & Static Folder
+// Setup Parse & Static Folder=======================================================================================
+
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
 app.use(express.static('public'));
 
-app.listen(PORT, () => console.log(`My Guy we are listening on Port: ${PORT}`));
+// Get routes for ALL routes=========================================================================================
 
-// Create list of routes
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
 
-// Get routes for ALL routes
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
 
-// Get routes
+// Get route=====================================================================================================
 
 app.get('/api/notes', (req, res) => {
     fs.readFile('../db/db.json', 'utf-8', (err, data) => {
@@ -33,7 +40,7 @@ app.get('/api/notes', (req, res) => {
     })
 
 });
-// Post routes
+// Post routes======================================================================================================
 
 app.post('/api/notes', (req, res) => {
             fs.readFile('../db/db.json', 'utf-8', (err, data) => {
@@ -54,8 +61,9 @@ app.post('/api/notes', (req, res) => {
 
             })
           });
+// Delete routes====================================================================================================
 
 
 
-// Delete routes
-
+// Listener for Port================================================================================================
+app.listen(PORT, () => console.log(`My Guy we are listening on Port: ${PORT}`));
