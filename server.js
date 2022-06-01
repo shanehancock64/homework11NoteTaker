@@ -34,17 +34,19 @@ app.get('/notes', (req, res) =>
 // Get route=====================================================================================================
 
 app.get('/api/notes', (req, res) => {
-    fs.readFile('./db/db.json', 'utf-8', (err, data) => {
+  let parsedData;
+    fs.readFile('./db/db.json', 'utf-8', async (err, data) => {
         if (err) throw err;
 
-        const parsedData = JSON.parse(data);
-        console.log(parsedData);
-        res.json({
-            message: 'Great Success!!!',
-            parsedData
-        });
+        parsedData = await JSON.parse(data);
+        
+        
+       
     })
-
+    res.json({
+      
+      parsedData
+  });
 });
 // Post routes======================================================================================================
 
