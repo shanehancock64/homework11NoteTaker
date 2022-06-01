@@ -1,10 +1,11 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Your Task",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shanehancock64/homework11NoteTaker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/shanehancock64/homework11NoteTaker/issues"
+  },
+  "homepage": "https://github.com/shanehancock64/homework11NoteTaker#readme"
 }
