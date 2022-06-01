@@ -41,7 +41,7 @@ app.get('/api/notes', (req, res) => {
         console.log(parsedData);
         res.json({
             message: 'Great Success!!!',
-            parseData
+            parsedData
         });
     })
 
