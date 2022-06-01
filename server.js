@@ -30,6 +30,7 @@ app.get('/notes', (req, res) =>
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
+;
 // Get route=====================================================================================================
 
 app.get('/api/notes', (req, res) => {
