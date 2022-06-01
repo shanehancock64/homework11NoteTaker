@@ -27,14 +27,14 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
-  });
+// app.get('*', function(req, res) {
+//     res.sendFile(path.join(__dirname, './public/index.html'));
+//   });
 ;
 // Get route=====================================================================================================
 
 app.get('/api/notes', (req, res) => {
-    fs.readFile('../db/db.json', 'utf-8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf-8', (err, data) => {
         if (err) throw err;
 
         const parsedData = JSON.parse(data);
@@ -49,7 +49,7 @@ app.get('/api/notes', (req, res) => {
 // Post routes======================================================================================================
 
 app.post('/api/notes', (req, res) => {
-            fs.readFile('../db/db.json', 'utf-8', (err, data) => {
+            fs.readFile('./db/db.json', 'utf-8', (err, data) => {
                 if (err) throw err;
 
                 const parsedData = JSON.parse(data);
@@ -57,7 +57,7 @@ app.post('/api/notes', (req, res) => {
 
                 parsedData.push(newNote);
 
-                fs.writeFile('../db/db.json', JSON.stringify(parsedData), (err) => {
+                fs.writeFile('./db/db.json', JSON.stringify(parsedData), (err) => {
                     if (err) throw err;
                     console.log('The file has been saved!');
                 });
