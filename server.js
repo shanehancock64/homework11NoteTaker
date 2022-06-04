@@ -32,22 +32,31 @@ app.get('/notes', (req, res) =>
 //   });
 ;
 // Get route=====================================================================================================
-
-app.get('/api/notes', (req, res) => {
+app.get("/api/notes", async (req, res) => {
   let parsedData;
-    fs.readFile('./db/db.json', 'utf-8', async (err, data) => {
-        if (err) throw err;
+  fs.readFile("./db/db.json", "utf-8", async (err, data) => {
+    if (err) throw err;
+    parsedData = await JSON.parse(data);
+    return res.json({
+      parsedData,
+    });
+  });
+});
+// app.get('/api/notes', (req, res) => {
+//   let parsedData;
+//     fs.readFile('./db/db.json', 'utf-8', async (err, data) => {
+//         if (err) throw err;
 
-        parsedData = await JSON.parse(data);
+//         parsedData = await JSON.parse(data);
         
         
        
-    })
-    res.json({
+//     })
+//     res.json({
       
-      parsedData
-  });
-});
+//       parsedData
+//   });
+// });
 // Post routes======================================================================================================
 
 app.post('/api/notes', (req, res) => {
