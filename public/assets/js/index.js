@@ -157,15 +157,14 @@ const renderNoteList = async (notes) => {
   if (jsonNotes.length === 0) {
     noteListItems.push(createLi('No saved Notes', false));
   }
-  
-  // jsonNotes.forEach
-  jsonNotes.parsedData.forEach(note)
-  
+  // jsonNotes.parsedData.forEach
+  jsonNotes.parsedData.forEach((note) 
+  => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
 
     noteListItems.push(li);
-  ;
+  });
 
   if (window.location.pathname === '/notes') {
     noteListItems.forEach((note) => noteList[0].append(note));
